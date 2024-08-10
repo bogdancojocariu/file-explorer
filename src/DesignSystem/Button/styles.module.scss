@@ -1,0 +1,47 @@
+.button {
+    cursor: pointer;
+    border: 1px solid;
+
+    // properties going to be overridden by modifiers
+    padding: var(--space-xs);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-light);
+    border-radius: var(--space-xs);
+
+    background-color: var(--color-blue-500);
+    color: var(--color-white);
+    border-color: var(--color-blue-200);
+}
+
+.small {
+    padding: var(--space-xs);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-light);
+    border-radius: var(--space-xs);
+}
+
+.medium {
+    padding: var(--space-m);
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-normal);
+    border-radius: var(--space-s);
+}
+
+.large {
+    padding: var(--space-l);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--space-m);
+}
+
+.primary {
+    background-color: var(--color-blue-500);
+    color: var(--color-white);
+    border-color: var(--color-blue-200);
+}
+
+.secondary {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-1000);
+    border-color: var(--color-gray-600);
+}

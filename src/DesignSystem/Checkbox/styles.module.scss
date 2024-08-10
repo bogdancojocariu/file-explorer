@@ -1,0 +1,78 @@
+.wrapper {
+    :global(input[type="checkbox"]) {
+        /* Remove default appearance */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        cursor: pointer;
+        background-color: var(--color-white);
+      }
+      
+
+      :global(input[type="checkbox"]:checked),
+      :global(input[type="checkbox"]:indeterminate) {
+        background-color: var(--color-blue-500);
+      }
+      
+      /* Checkmark for the checked state */
+      :global(input[type="checkbox"]:checked::after) {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 30%;
+        height: 50%;
+        border: solid var(--color-white);
+        border-width: 0 2px 2px 0;
+        transform: rotate(40deg) translate(-80%, -30%);
+      }
+      
+      /* Indeterminate state line */
+      :global(input[type="checkbox"]:indeterminate::before) {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        height: 2px;
+        background-color: var(--color-white);
+        transform: translate(-50%, -50%)
+      }
+}
+
+.small {
+    :global(input) {
+        height: 12px;
+        width: 12px;
+    }
+}
+
+.medium {
+    :global(input) {
+        height: 16px;
+        width: 16px;
+    }
+}
+
+.large {
+    :global(input) {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+// Override background for the input
+.primary {
+    :global(input[type="checkbox"]:checked),
+    :global(input[type="checkbox"]:indeterminate) {
+        background-color: var(--color-blue-500);
+    }
+}
+
+.secondary {
+    :global(input[type="checkbox"]:checked),
+    :global(input[type="checkbox"]:indeterminate) {
+        background-color: var(--color-gray-200);
+    }
+}

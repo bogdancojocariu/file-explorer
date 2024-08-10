@@ -9,27 +9,31 @@ export enum ButtonSize {
   Large = "large",
 }
 
-export enum ButtonType {
+export enum ButtonColorType {
   Primary = "primary",
   Secondary = "secondary",
 }
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ButtonSize;
-  type?: ButtonType;
+  colorType?: ButtonColorType;
 };
 
 export const Button: React.FC<ButtonProps> = props => {
-  const { size = ButtonSize.Medium, type = ButtonType.Primary } = props;
+  const {
+    size = ButtonSize.Medium,
+    colorType = ButtonColorType.Primary,
+    ...restOfProps
+  } = props;
 
   const btnClassName = classNames(
     styles.button,
     [styles[size]],
-    [styles[type]]
+    [styles[colorType]]
   );
 
   return (
-    <button className={btnClassName} {...props}>
+    <button className={btnClassName} {...restOfProps}>
       {props.children}
     </button>
   );

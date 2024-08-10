@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       Hello\
-      <Button>Hello</Button>
+      <Button onClick={() => console.log("clicked")}>Hellzo</Button>
     </div>
   );
 }

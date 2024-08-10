@@ -14,10 +14,10 @@
 }
 
 .small {
-    padding: var(--space-xs);
-    font-size: var(--font-size-xs);
+    padding: var(--space-s);
+    font-size: var(--font-size-s);
     font-weight: var(--font-weight-light);
-    border-radius: var(--space-xs);
+    border-radius: var(--space-s);
 }
 
 .medium {
@@ -42,6 +42,6 @@
 
 .secondary {
     background-color: var(--color-gray-200);
-    color: var(--color-gray-1000);
+    color: var(--color-gray-900);
     border-color: var(--color-gray-600);
 }

@@ -1,0 +1,18 @@
+.fileStatus {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+
+    position: relative;
+
+    .availableIcon {
+        --icon-size: var(--space-xxl);
+   
+        position: absolute;
+        left: calc(-1 * (var(--space-s) + var(--icon-size)));
+        background-color: var(--color-green-500);
+        width: var(--icon-size);
+        height: var(--icon-size);
+        border-radius: 50%
+    }
+}

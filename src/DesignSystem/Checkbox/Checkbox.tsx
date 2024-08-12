@@ -1,8 +1,9 @@
+import { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { Input, InputColorType, InputProps, InputSize } from "../Input/Input";
 
 import styles from "./styles.module.scss";
-import { useEffect, useRef } from "react";
+
+import { Input, InputColorType, InputProps, InputSize } from "../Input/Input";
 
 export type CheckboxProps = InputProps & {
   indeterminate?: boolean;
@@ -28,6 +29,9 @@ export const Checkbox: React.FC<CheckboxProps> = props => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
+  // This is set using the HTMLInputElement object's indeterminate property via JavaScript
+  // (it cannot be set using an HTML attribute):
   useEffect(() => {
     if (inputRef?.current) {
       inputRef.current.indeterminate = !!indeterminate;

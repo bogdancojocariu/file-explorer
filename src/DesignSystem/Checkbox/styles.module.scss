@@ -57,8 +57,8 @@
 
 .large {
     :global(input) {
-        height: 20px;
-        width: 20px;
+        height: var(--space-xxl);
+        width: var(--space-xxl);
     }
 }
 

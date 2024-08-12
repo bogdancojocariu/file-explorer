@@ -2,7 +2,38 @@
     background-color: var(--color-white);
     width: 100%;
     border-spacing: 0;
-    width: 100%;
-    border-top: 1px solid var(--color-gray-200);
+    border: 1px solid var(--color-gray-300);
     text-align: left;
-  }
+    border-collapse:collapse;
+
+    .headerRow {
+        background-color: var(--color-gray-200);
+        border-bottom: 1px solid var(--color-gray-400);
+
+        .headerCell {
+            font-size: var(--font-size-l);
+        };
+    }
+
+    .row {
+        border-bottom: 1px solid var(--color-gray-300);
+
+        &.rowSelected {
+            background-color: var(--color-gray-300);
+
+        }
+        &:hover {
+            background-color: var(--color-gray-400);
+        }
+    }
+
+    .cell {
+        padding: var(--space-l);
+
+        .cellContent {
+            display: flex;
+            align-items: center;
+            gap: var(--space-m);
+        }
+    }
+}

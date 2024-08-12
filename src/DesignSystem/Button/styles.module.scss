@@ -42,7 +42,7 @@
     padding: var(--space-l);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    border-radius: var(--space-m);
+    border-radius: var(--space-l);
 }
 
 .primary {
@@ -52,7 +52,7 @@
 }
 
 .secondary {
-    background-color: var(--color-gray-200);
+    background-color: var(--color-gray-400);
     color: var(--color-gray-900);
     border-color: var(--color-gray-600);
 }

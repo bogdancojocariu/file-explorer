@@ -1,13 +1,12 @@
 import "./App.scss";
-import { Button } from "./DesignSystem/Button/Button";
+import { Files } from "./Files/Files";
+import { File } from "./Files/types";
+import mockFiles from "./api/db.json";
 
 function App() {
-  return (
-    <div>
-      Hello\
-      <Button onClick={() => console.log("clicked")}>Hellzo</Button>
-    </div>
-  );
+  const files = mockFiles as File[];
+
+  return <Files files={files} />;
 }
 
 export default App;

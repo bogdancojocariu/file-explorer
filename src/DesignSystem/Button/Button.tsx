@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
+import classNames from "classnames";
 
 import styles from "./styles.module.scss";
-import classNames from "classnames";
 
 export enum ButtonSize {
   Small = "small",
@@ -23,13 +23,15 @@ export const Button: React.FC<ButtonProps> = props => {
   const {
     size = ButtonSize.Medium,
     colorType = ButtonColorType.Primary,
+    className,
     ...restOfProps
   } = props;
 
   const btnClassName = classNames(
     styles.button,
     [styles[size]],
-    [styles[colorType]]
+    [styles[colorType]],
+    className
   );
 
   return (

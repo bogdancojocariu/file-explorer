@@ -1,5 +1,6 @@
-import classNames from "classnames";
 import { forwardRef, InputHTMLAttributes } from "react";
+import classNames from "classnames";
+
 import styles from "./styles.module.scss";
 
 export enum InputSize {

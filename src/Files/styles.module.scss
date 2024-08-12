@@ -1,0 +1,10 @@
+.files {
+    width: 100%;
+
+    .header {
+        display: flex;
+        align-content: center;
+        gap: var(--space-l);
+        margin-bottom: var(--space-xxl);
+    }
+}

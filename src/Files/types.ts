@@ -4,7 +4,7 @@ export enum FileStatusEnum {
 }
 
 export type File = {
-  name: `${string}.${string}`;
+  name: string;
   device: string;
   path: string;
   status: FileStatusEnum;

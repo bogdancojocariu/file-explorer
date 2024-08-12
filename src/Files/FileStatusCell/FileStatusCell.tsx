@@ -1,7 +1,8 @@
 import { FileStatusEnum } from "../types";
-import { capitalize } from "../../utils/utils";
+import { capitalize } from "@utils";
+import { CellParams } from "@design-system";
+
 import styles from "./styles.module.scss";
-import { CellParams } from "../../DesignSystem/Table/Table";
 
 export type FileStatusCellProps = CellParams<FileStatusEnum>;
 

@@ -18,7 +18,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@design-system": ["src/DesignSystem"],
+      "@icons": ["src/assets/icons"],
+      "@utils": ["src/utils/utils"]
+    }
   },
   "include": ["src"]
 }

@@ -5,10 +5,9 @@ import styles from "./styles.module.scss";
 import { File } from "./types";
 import { allFilesSelected, getRowId } from "./utils";
 
-import { ColDef, Table } from "../DesignSystem/Table/Table";
+import { ColDef, Table, Checkbox, InputSize } from "@design-system";
 import { DownloadFilesButton } from "./DownloadFilesButton/DownloadFilesButton";
-import { Checkbox } from "../DesignSystem/Checkbox/Checkbox";
-import { InputSize } from "../DesignSystem/Input/Input";
+
 import { FileStatusCell } from "./FileStatusCell/FileStatusCell";
 
 export type FilesProps = {

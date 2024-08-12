@@ -1,9 +1,6 @@
-import {
-  Button,
-  ButtonColorType,
-  ButtonSize,
-} from "../../DesignSystem/Button/Button";
-import fileDownloadIcon from "../../assets/FileDownload.svg";
+import { Button, ButtonColorType, ButtonSize } from "@design-system";
+import fileDownloadIcon from "@icons/FileDownload.svg";
+
 import styles from "./styles.module.scss";
 
 export type DownloadFilesButtonProps = {

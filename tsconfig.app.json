@@ -26,5 +26,5 @@
       "@utils": ["src/utils/utils"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "./jest.setup.ts"]
 }

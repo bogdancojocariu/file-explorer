@@ -19,7 +19,7 @@ export type ColDef = {
   // use cellRenderer to override default behavior of outputting the property value
   cellRenderer?: React.FC<CellParams<any>>;
   // when allowSelection is true, a select row checkbox will be rendered together with the content
-  allowsSelection?: boolean;
+  allowsSelection?: boolean | ((args: any) => boolean);
   // override the cell's styles
   style?: React.CSSProperties;
 };
@@ -66,10 +66,19 @@ export const Table = <TRow extends Record<string, any>>(
           });
 
           return (
-            <tr key={rowId} className={rowClassName}>
+            <tr key={rowId} data-testid={rowId} className={rowClassName}>
               {colDef.map((column, fieldInd) => {
                 // Get the cell value based on the column x row intersection and the `field` mapping
                 const cellValue = row?.[column.field] || "";
+                const isSelectable =
+                  typeof column?.allowsSelection === "function"
+                    ? column.allowsSelection(row)
+                    : column?.allowsSelection;
+
+                // cellRenderer takes priority over the default value
+                const cellContent = column?.cellRenderer
+                  ? column.cellRenderer({ value: cellValue })
+                  : cellValue;
 
                 return (
                   <td
@@ -80,16 +89,15 @@ export const Table = <TRow extends Record<string, any>>(
                     <div className={styles.cellContent}>
                       {column?.allowsSelection && (
                         <Checkbox
+                          data-testid={`${rowId}-select-checkbox`}
                           inputSize={InputSize.Medium}
                           checked={isRowSelected}
                           onChange={() => onRowSelect(rowId, row)}
+                          disabled={!isSelectable}
                         />
                       )}
 
-                      {/* cellRenderer takes priority over the default value */}
-                      {column?.cellRenderer
-                        ? column.cellRenderer({ value: cellValue })
-                        : cellValue}
+                      {cellContent}
                     </div>
                   </td>
                 );

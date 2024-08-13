@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 
 import { File } from "./types";
-import { allFilesSelected, getRowId } from "./utils";
+import { allFilesSelected, getRowId, isFileSelectable, testIds } from "./utils";
 
 import { ColDef, Table, Checkbox, InputSize } from "@design-system";
 import { DownloadFilesButton } from "./DownloadFilesButton/DownloadFilesButton";
@@ -15,7 +15,12 @@ export type FilesProps = {
 };
 
 const COL_DEF: ColDef[] = [
-  { field: "id", label: "", allowsSelection: true, style: { width: "30px" } },
+  {
+    field: "id",
+    label: "",
+    allowsSelection: isFileSelectable,
+    style: { width: "30px" },
+  },
   {
     field: "name",
     label: "Name",
@@ -50,20 +55,34 @@ export const Files: React.FC<FilesProps> = props => {
     }
   };
 
-  const onSelectAll = () => {
-    if (isAllSelected) {
+  // When select All checkbox is clicked, if any all eligible files are selected, deselect them,
+  // otherwise select them.
+  const onSelectAllAvailable = () => {
+    const allFilesAvailableForSelection = files.filter(isFileSelectable);
+    const isAllAvailableSelected = allFilesSelected(
+      allFilesAvailableForSelection,
+      selected
+    );
+
+    if (isAllAvailableSelected) {
       setSelected([]);
     } else {
-      setSelected(files.map(getRowId));
+      setSelected(allFilesAvailableForSelection.map(getRowId));
     }
   };
+
+  const selectedCheckboxLabel =
+    selected.length > 0 ? `Selected ${selected.length}` : "None Selected";
 
   return (
     <div className={styles.files}>
       <div className={styles.header}>
         <Checkbox
-          label={`Selected ${selected.length}`}
-          onChange={onSelectAll}
+          id={testIds.selectAllCheckbox}
+          name={testIds.selectAllCheckbox}
+          data-testid={testIds.selectAllCheckbox}
+          label={selectedCheckboxLabel}
+          onChange={onSelectAllAvailable}
           checked={isAllSelected}
           indeterminate={!isAllSelected && selected.length > 0}
           inputSize={InputSize.Large}

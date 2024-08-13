@@ -12,6 +12,7 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "./src/utils/utils"),
     },
   },
+
   css: {
     preprocessorOptions: {
       scss: {

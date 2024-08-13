@@ -29,7 +29,7 @@ export const DownloadFilesButton: React.FC<DownloadFilesButtonProps> = ({
           src={fileDownloadIcon}
           alt="file download icon"
         />
-        <span>Download {devicesInfo.length} Selected</span>
+        <span>Download Selected</span>
       </div>
     </Button>
   );

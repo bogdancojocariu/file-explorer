@@ -24,17 +24,19 @@ export type ColDef = {
   style?: React.CSSProperties;
 };
 
-export type TableProps<RowType> = TableHTMLAttributes<HTMLTableElement> & {
+export type TableProps<TRow> = TableHTMLAttributes<HTMLTableElement> & {
   colDef: ColDef[];
-  rowData: RowType[];
+  // Generic TRow type for the row data to be inferred by usage while keeping type safety by consumer
+  rowData: TRow[];
   selection?: string[];
 
-  onRowSelect: (id: string, row: RowType) => void;
-  getRowId?: (row: RowType) => string;
+  onRowSelect: (id: string, row: TRow) => void;
+  // used to compute an unique rowId if provided, will default to the row index otherwise
+  getRowId?: (row: TRow) => string;
 };
 
-export const Table = <RowType extends Record<string, any>>(
-  props: TableProps<RowType>
+export const Table = <TRow extends Record<string, any>>(
+  props: TableProps<TRow>
 ) => {
   const { colDef, rowData, selection, onRowSelect, getRowId, ...restOfProps } =
     props;
@@ -64,14 +66,14 @@ export const Table = <RowType extends Record<string, any>>(
           });
 
           return (
-            <tr key={rowInd} className={rowClassName}>
+            <tr key={rowId} className={rowClassName}>
               {colDef.map((column, fieldInd) => {
                 // Get the cell value based on the column x row intersection and the `field` mapping
                 const cellValue = row?.[column.field] || "";
 
                 return (
                   <td
-                    key={cellValue + fieldInd}
+                    key={fieldInd}
                     className={styles.cell}
                     style={column.style}
                   >

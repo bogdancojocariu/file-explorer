@@ -31,8 +31,8 @@ npm run storybook
 
 ### Few considerations
 
-The data was mocked via a JSON in `/src/api/db.json`, and passed via props in the <Files files={files}>. Alternatively I considered using a JSON server and React Query to simulate a data-fetch with loading and error states.
+The data was mocked via a JSON in `/src/api/db.json`, and passed via props in the `<Files files={files}>`. Alternatively I considered using a JSON server and React Query to simulate a data-fetch with loading and error states.
 
-The <Table> component was inspired by ag-grid (or at least the API). I like this props approach vs composition because if there are tens, hundreds of tables to be written, I can't imagine dealing the verbosity in the composition pattern. If this would have been a web-components UI library, situation would be different, but building React for React, I like props.
+The `<Table>` component was inspired by ag-grid (or at least the API). I like this props approach vs composition because if there are tens, hundreds of tables to be written, I can't imagine dealing the verbosity in the composition pattern. If this would have been a web-components UI library, situation would be different, but building React for React, I like props.
 
-Testing the <Files> component is more of an integration test, where it checks multiple user interactions.
+Testing the `<Files>` component is more of an integration test, where it checks multiple user interactions.

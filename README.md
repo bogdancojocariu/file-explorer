@@ -45,3 +45,5 @@ I have disabled a couple of eslint-rules in certain conditions:
 - usage of `any` in the `<Table>` component for some callbacks or arguments. The idea is to make these things generics, but there are some limitations and due to the time and complexity constraints, I have cut this corner.
 
 Each `File` has that `device` and `path` which at least at first glance, the combination should create an unique `id`, as there can't be two files on the same device with the same path. But the API is flexible enough to change the `getRowId()` to support multiple values, like the `index` or pre-transforming the files API response to include the `index`. I've decided to use the `path-device` combination to ease the job for `<DownloadFilesButton>`
+
+I have decided to only allow selection for files with `status=available` because when user clicks Download, they will Download exactly what they see as selected. I believe allowing every file to be selected and then only Download the available ones can create confusion to the end user on "why some files were not downloaded?"

@@ -36,3 +36,10 @@ The data was mocked via a JSON in `/src/api/db.json`, and passed via props in th
 The `<Table>` component was inspired by ag-grid (or at least the API). I like this props approach vs composition because if there are tens, hundreds of tables to be written, I can't imagine dealing the verbosity in the composition pattern. If this would have been a web-components UI library, situation would be different, but building React for React, I like props.
 
 Testing the `<Files>` component is more of an integration test, where it checks multiple user interactions.
+
+I have disabled a couple of eslint-rules in certain conditions:
+
+- unused-vars => when destructuring some properties, I didn't need that variable in the `...rest`, but also I don't use it
+- usage of `any` in the `<Table>` component for some callbacks or arguments. The idea is to make these things generics, but there are some limitations and due to the time and complexity constraints, I have cut this corner.
+
+Each `File` has that `device` and `path` which at least at first glance, the combination should create an unique `id`, as there can't be two files on the same device with the same path. But the API is flexible enough to change the `getRowId()` to support multiple values, like the `index` or pre-transforming the files API response to include the `index`. I've decided to use the `path-device` combination to ease the job for `<DownloadFilesButton>`

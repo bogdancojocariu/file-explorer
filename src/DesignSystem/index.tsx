@@ -20,3 +20,5 @@ export {
   type ColDef,
   type CellParams,
 } from "./Table/Table";
+
+export { Tooltip } from "./Tooltip/Tooltip";

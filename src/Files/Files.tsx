@@ -19,6 +19,7 @@ const COL_DEF: ColDef[] = [
     field: "id",
     label: "",
     allowsSelection: isFileSelectable,
+    selectionDisabledText: "Only files with Status Available can be selected",
     style: { width: "30px" },
   },
   {

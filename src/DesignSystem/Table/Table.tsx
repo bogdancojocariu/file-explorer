@@ -4,8 +4,7 @@ import classNames from "classnames";
 
 import styles from "./styles.module.scss";
 
-import { Checkbox } from "../Checkbox/Checkbox";
-import { InputSize } from "../Input/Input";
+import { RowSelectionCheckbox } from "./RowSelectionCheckbox/RowSelectionCheckbox";
 
 // Generic type over what will be injected in a rendered component inside a row cell
 export type CellParams<T> = {
@@ -20,6 +19,7 @@ export type ColDef = {
   cellRenderer?: React.FC<CellParams<any>>;
   // when allowSelection is true, a select row checkbox will be rendered together with the content
   allowsSelection?: boolean | ((args: any) => boolean);
+  selectionDisabledText?: string;
   // override the cell's styles
   style?: React.CSSProperties;
 };
@@ -88,9 +88,12 @@ export const Table = <TRow extends Record<string, any>>(
                   >
                     <div className={styles.cellContent}>
                       {column?.allowsSelection && (
-                        <Checkbox
+                        <RowSelectionCheckbox
+                          disabledSelectionContent={
+                            column.selectionDisabledText
+                          }
+                          id={`${rowId}-select-checkbox`}
                           data-testid={`${rowId}-select-checkbox`}
-                          inputSize={InputSize.Medium}
                           checked={isRowSelected}
                           onChange={() => onRowSelect(rowId, row)}
                           disabled={!isSelectable}
